@@ -27,14 +27,17 @@ class AddColumnsSalesOrderGridCollection
             ) {
                 $select = $this->collection->getSelect();
                 $select->join(
-                    ["soa" => "sales_order_address"],
+                    ["soa" => "mg_sales_order_address"],
                     'main_table.entity_id = soa.parent_id AND soa.address_type="billing"',
                     array('company')
                 )
                     ->distinct();
             }
-
+            return $this->collection;
+        }else{
+            
+            return $result;
         }
-        return $this->collection;
+        
     }
 }
